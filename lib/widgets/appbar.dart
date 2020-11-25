@@ -27,8 +27,8 @@ class BottomMenu extends StatelessWidget {
             SizedBox(width: 20),
             IconButton(
               padding: EdgeInsets.zero,
-              icon: Icon(Icons.book, color: Colors.cyan, size: 50),
-              onPressed: () => Navigator.pushReplacementNamed(context, "/"),
+              icon: Icon(Icons.refresh, color: Colors.cyan, size: 50),
+              onPressed: () => Navigator.pushReplacementNamed(context, "/spinner"),
             ),
             IconButton(
               padding: EdgeInsets.zero,

@@ -1,3 +1,4 @@
+import 'package:bluefrost/pages/spinner.dart';
 import "package:flutter/material.dart";
 import "pages/loading.dart";
 import "package:bluefrost/pages/settings.dart";
@@ -18,6 +19,7 @@ class App extends StatelessWidget {
         "/": ( BuildContext context ) => Loading(),
         "/welcome": ( BuildContext context ) => Welcome(),
         "/home": ( BuildContext context ) => Home(),
+        "/spinner": ( BuildContext context ) => Spinner(),
         "/settings": ( BuildContext context ) => Settings(),
       },
     );
