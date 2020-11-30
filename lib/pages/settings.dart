@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bluefrost/widgets/appbar.dart';
+import 'package:bluefrost/widgets/animatedText.dart';
 
 class Settings extends StatefulWidget {
   @override _SettingsState createState() => _SettingsState();
@@ -44,14 +45,7 @@ class _SettingsState extends State<Settings> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     SizedBox(height: 20),
-                    Text(
-                      "Options",
-                      style: TextStyle(
-                        fontSize: 50,
-                        color: Colors.cyan,
-                        fontFamily: "Quicksand",
-                      )
-                    ),
+                    AnimatedText("Options", 50, 300),
                     SizedBox(height: 30),
                     tile("Option 1", "A very good option", Icons.account_balance),
                     tile("Option 2", "Also a very good option", Icons.ac_unit),

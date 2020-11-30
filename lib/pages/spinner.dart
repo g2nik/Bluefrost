@@ -37,9 +37,7 @@ class _SpinnerState extends State<Spinner> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Expanded(child: spinner()),
-              SpinnerButton(value),
-              //Text(value.toString(), style: TextStyle(fontFamily: "Quicksand", fontSize: 50),),
-              SizedBox(height: 120),
+              SizedBox(height: 50),
             ],
           ),
         ),
