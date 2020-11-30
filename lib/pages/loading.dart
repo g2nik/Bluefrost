@@ -9,6 +9,7 @@ class Loading extends StatefulWidget {
 class _LoadingState extends State<Loading> {
   String text;
 
+  //After 6 seconds the welcome page loads
   Future load(BuildContext context) async {
     return Future.delayed(const Duration(seconds: 6), () {
       setState(() {});
@@ -32,7 +33,10 @@ class _LoadingState extends State<Loading> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
+                //Here i delcare a background image
                 image: AssetImage("assets/background.jpg"),
+                //I make the image semi transparent, so in combination of the black bacgkrougn
+                //it has a darkened effect
                 colorFilter: ColorFilter.mode(Colors.black.withOpacity(.4), BlendMode.dstATop),
               ),
             ),
@@ -40,6 +44,8 @@ class _LoadingState extends State<Loading> {
               children: [
                 SizedBox(height: 75),
                 SizedBox(
+
+                  //This widget animates the Loading... text
                   child: TyperAnimatedTextKit(
                     speed: Duration(milliseconds: 200),
                     onTap: () {},

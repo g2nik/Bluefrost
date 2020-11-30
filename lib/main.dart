@@ -7,6 +7,8 @@ import "package:bluefrost/pages/home.dart";
  
 void main() => runApp(App());
  
+ //Here i declare the routes to every page
+ //The default is the loading one
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
