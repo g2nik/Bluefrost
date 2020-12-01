@@ -9,11 +9,12 @@ class Spinner extends StatefulWidget {
 }
 
 class _SpinnerState extends State<Spinner> {
-
+  //This is the value of the selected item of the spinner
   var value;
 
   @override
   void initState() {
+    //The value is 1 on start
     value = 1;
     super.initState();
   }
@@ -26,6 +27,7 @@ class _SpinnerState extends State<Spinner> {
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
+              //As usual a darkened background image
               fit: BoxFit.cover,
               image: AssetImage("assets/background.jpg"),
               colorFilter: ColorFilter.mode(Colors.black.withOpacity(.9), BlendMode.dstATop),
@@ -34,6 +36,7 @@ class _SpinnerState extends State<Spinner> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              //I have a sizedbox to center the spinner so that it doesn't hide behind the bottom app bar
               Expanded(child: spinner()),
               SizedBox(height: 50),
             ],
@@ -51,9 +54,10 @@ class _SpinnerState extends State<Spinner> {
     );
   }
 
+  //This widget generates a "spinner" with 150 childs and loops itself
   Widget spinner() {
     return ListWheelScrollView.useDelegate(
-      onSelectedItemChanged: (val) => Changed(val),
+      onSelectedItemChanged: (val) => value = val + 1,
       diameterRatio: 2,
       itemExtent: 100,
       childDelegate: ListWheelChildLoopingListDelegate(
@@ -64,10 +68,7 @@ class _SpinnerState extends State<Spinner> {
     );
   }
 
-  void Changed(int val) {
-    value = val + 1;
-  }
-
+  //Each section generates a number, and depending on it uses a certain color
   Widget section() {
 
     Color color;
@@ -82,6 +83,7 @@ class _SpinnerState extends State<Spinner> {
     else if (random < 50) color = Colors.blue;
     else color = Colors.green;
 
+    //If the number generated is 1 its text becomes "Rare item"
     text = random == 1 ? "Rare item" : "?";
 
     return Container(
@@ -89,7 +91,7 @@ class _SpinnerState extends State<Spinner> {
       width: MediaQuery.of(context).size.width,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [Text(text, textAlign: TextAlign.center, style: TextStyle(fontSize: 50),)],
+        children: [Text(text, textAlign: TextAlign.center, style: TextStyle(fontSize: 50))],
       ),
     );
   }

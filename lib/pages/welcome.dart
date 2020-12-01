@@ -80,7 +80,7 @@ class _WelcomeState extends State<Welcome> {
 
             SizedBox(height: 350),
 
-            //This container changes height with an animation
+            //This container changes height with an animation that lasts 2 seconds
             AnimatedContainer(
               height: height,
               curve: Curves.decelerate,
@@ -103,26 +103,31 @@ class _WelcomeState extends State<Welcome> {
           Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height * .55,
-            decoration: BoxDecoration(
-              color: Colors.grey[900].withOpacity(.7),
-            ),
+            //I set the background color to an semi transparent grey
+            decoration: BoxDecoration(color: Colors.grey[900].withOpacity(.7)),
             child: Column(
               children: [
                 SizedBox(height: 30),
                 SizedBox(
+                  //This sized box contains the animated text, which colors flashes
                   width: 300,
                   child: AnimatedText("Welcome to Blue Frost")
                 ),
                 SizedBox(height: 40),
+                //Two decorated textfields
                 field("User"),
                 field("Password"),
                 SizedBox(height: 20),
+                //The button send you to the home screen
                 RaisedButton(
-                  onPressed: () => Navigator.pushReplacement(context, _createRoute(Home())), //Navigator.push(context, "/home"),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+                  onPressed: () => Navigator.pushReplacementNamed(context, "/home"),
                   padding: EdgeInsets.symmetric(horizontal: 64, vertical: 20),
-                  color: Colors.cyan,
+                  color: Colors.transparent,
                   child: Text("Login"),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                    side: BorderSide(color: Colors.cyanAccent, width: 1)
+                  ),
                 ),
               ],
             )
@@ -132,22 +137,6 @@ class _WelcomeState extends State<Welcome> {
     );
   }
 
-  Route _createRoute(Widget widget) {
-  return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => widget,
-    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      var begin = Offset(0.0, 1.0);
-      var end = Offset.zero;
-      var curve = Curves.ease;
-      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-      return SlideTransition(
-        position: animation.drive(tween),
-        child: child,
-      );
-    },
-  );
-}
-
   //This is a textfield where the user can put data
   Widget field(String text) {
     return Padding(
@@ -155,20 +144,23 @@ class _WelcomeState extends State<Welcome> {
       child: TextField(
         cursorColor: Colors.white,
         decoration: InputDecoration(
+          //Has 16 of internal padding
           contentPadding: EdgeInsets.all(16),
-          fillColor: Colors.cyan,
           border: InputBorder.none,
+          //The placeholder text is taken from the parameter
           hintText: text,
 
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.cyanAccent, width: 3),
-            borderRadius: BorderRadius.circular(25),
-          ),
-
+          //The default border is thin and cyan colored
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.cyan),
             borderRadius: BorderRadius.circular(25),
           ),
+          //The focused border is thicker and has a lighter color
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.cyanAccent, width: 2),
+            borderRadius: BorderRadius.circular(25),
+          ),
+
         ),
       ),
     );

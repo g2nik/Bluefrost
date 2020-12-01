@@ -10,12 +10,15 @@ class _SettingsState extends State<Settings> {
   bool lightTheme;
   Color background;
 
+  //This function updates the boolean lightteme and the background color
   Function ChangeTheme(lightTheme) {
     this.lightTheme = lightTheme;
+    //The background color is either white or a black with transparency effect.
     background = lightTheme ? Colors.grey[200] : Colors.black.withOpacity(.6);
   }
 
   @override void initState() {
+    //At start i set the lighttheme to true
     lightTheme = true;
     background = Colors.grey[200];
     super.initState();

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class BottomMenu extends StatelessWidget {
+
+  //I return a bar with a notch in the middle
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
@@ -14,6 +16,8 @@ class BottomMenu extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            //I have 4 buttons, one that reloads the app, another that goes home
+            //one which opens the spinner and the other that shows the settings
             IconButton(
               padding: EdgeInsets.zero,
               icon: Icon(Icons.replay_outlined, color: Colors.cyan, size: 50),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
-
+//This widget shows a text that "shines" or more specifically
+//changes its colors to similar ones to get that effect
 class AnimatedText extends StatelessWidget {
   AnimatedText(this.text, [this.size = 45, this.duration = 150]);
 
@@ -19,19 +20,20 @@ class AnimatedText extends StatelessWidget {
       onTap: () {},
       textAlign: TextAlign.center,
       alignment: AlignmentDirectional.topStart,
-      text: [
-        text
-      ],
+      text: [text],
       textStyle: TextStyle(
         color: Colors.cyan,
           fontSize: size,
           fontFamily: "Quicksand",
       ),
+      //These colors give a shining effect
       colors: [
         Colors.cyan,
         Colors.cyanAccent,
         Colors.blue,
         Colors.indigo,
+        Colors.blue,
+        Colors.cyanAccent,
       ],
     );
   }
